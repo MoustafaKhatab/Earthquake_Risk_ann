@@ -1,0 +1,3 @@
+./.venv/
+data/raw_seismic_100y.csv
+data/turkey_training_set.csv
