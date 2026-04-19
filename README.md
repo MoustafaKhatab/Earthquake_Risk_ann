@@ -20,6 +20,6 @@ data/turkey_training_set.csv has all the data for the past 100 yeays ago
 
 # our Perceptron equation 
  - The Perceptron takes your features, multiplies them by Weights ($W$), adds a Bias ($b$), and then checks if the total is greater than zero:
- - $$z = (w_1 \cdot \text{lat}) + (w_2 \cdot \text{lon}) + (w_3 \cdot \text{dist\_min}) + (w_4 \cdot \text{count}) + (w_5 \cdot \text{avg\_mag}) + b$$
+ - z = (w1 . lat) + (w2 . lon) + (w3 . dist_min) + (w4 count) + (w5 . avg_mag) + b
 
- * Activation: If $z \geq 0$, output is 1 (Risky). Otherwise, output is 0 (Safe).
+ * Activation: If z = 0, output is 1 (Risky). Otherwise, output is 0 (Safe).
