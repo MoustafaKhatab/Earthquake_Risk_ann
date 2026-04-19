@@ -23,3 +23,19 @@ data/turkey_training_set.csv has all the data for the past 100 yeays ago
  - z = (w1 . lat) + (w2 . lon) + (w3 . dist_min) + (w4 count) + (w5 . avg_mag) + b
 
  * Activation: If z = 0, output is 1 (Risky). Otherwise, output is 0 (Safe).
+
+## 🛠️ Key Features & Engineering
+### 1. Manual Data Preprocessing
+To demonstrate a deep understanding of the ML pipeline, we avoided high-level libraries (like `scikit-learn`) for data preparation:
+- **Shuffle & Split:** Randomly permuted the dataset to ensure a balanced 80/20 train-test split.
+- **Manual Standardization:** Implemented Z-score normalization ($x_{std} = \frac{x - \mu}{\sigma}$) to handle feature scale imbalances between Latitude and Distance.
+- **Data Leakage Protection:** Calculated Mean and Standard Deviation exclusively from the Training Set.
+
+
+
+### 2. The Perceptron Model
+A custom class implementing the classic binary classifier:
+- **Weight Initialization:** Weights and Bias are initialized to zero.
+- **Activation Function:** Unit Step Function ($f(z) = 1$ if $z \ge 0$, else $0$).
+- **Learning Rule:** Iterative weight updates based on misclassifications:
+  $$W_{new} = W_{old} + \eta \cdot (y_{target} - y_{predicted}) \cdot x$$
