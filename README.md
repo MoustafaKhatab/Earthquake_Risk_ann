@@ -14,4 +14,12 @@ data/turkey_training_set.csv has all the data for the past 100 yeays ago
 # lable 
     (0,1) : it is out lable , 0 means it no effect from this earthquike and 1 means it is effecting or there is a noticed impact
 
-# 
+# how we gonna use this data?
+ - we use the lat and lon to know where the earthquike happend.
+ - we used this points also to point the country we wanna work with 
+
+# our Perceptron equation 
+ - The Perceptron takes your features, multiplies them by Weights ($W$), adds a Bias ($b$), and then checks if the total is greater than zero:
+ - $$z = (w_1 \cdot \text{lat}) + (w_2 \cdot \text{lon}) + (w_3 \cdot \text{dist\_min}) + (w_4 \cdot \text{count}) + (w_5 \cdot \text{avg\_mag}) + b$$
+
+ * Activation: If $z \geq 0$, output is 1 (Risky). Otherwise, output is 0 (Safe).
