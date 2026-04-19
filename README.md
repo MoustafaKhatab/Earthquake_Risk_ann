@@ -39,3 +39,10 @@ A custom class implementing the classic binary classifier:
 - **Activation Function:** Unit Step Function ($f(z) = 1$ if $z \ge 0$, else $0$).
 - **Learning Rule:** Iterative weight updates based on misclassifications:
   $$W_{new} = W_{old} + \eta \cdot (y_{target} - y_{predicted}) \cdot x$$
+
+## 📊 Results: Phase 1 (Perceptron)
+The Perceptron model achieved a near-perfect classification on the Turkey dataset.
+
+- **Training Accuracy:** 100% (Converged by Epoch 10)
+- **Test Accuracy:** 99.75%
+- **Key Insight:** The `count_radius` feature showed the highest weight, indicating it is the most significant indicator for the risk threshold defined in the proposal.
