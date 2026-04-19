@@ -39,9 +39,9 @@ def preprocess_data(X, y, split_ratio=0.8):
     X_train_scaled = (X_train - mean) / std
     X_test_scaled = (X_test - mean) / std
 
-    return X_train_scaled, X_test_scaled, y_train, y_test
+    return X_train_scaled, X_test_scaled, y_train, y_test, mean, std    
 
-X_train, X_test, y_train, y_test = preprocess_data(X, y, TRAIN_SPLIT)
+X_train, X_test, y_train, y_test, mean, std = preprocess_data(X, y, TRAIN_SPLIT)
 print(f"Dataset Split: {len(X_train)} Train | {len(X_test)} Test")
 
 # ==========================================
@@ -53,6 +53,8 @@ class Perceptron:
         self.epochs = epochs
         self.weights = None
         self.bias = None
+        self.mean = None
+        self.std = None
 
     def fit(self, X, y):
         # Initialize parameters
@@ -99,3 +101,25 @@ print(f"Final Bias: {model.bias}")
 y_pred = model.predict(X_test)
 accuracy = np.sum(y_pred == y_test) / len(y_test)
 print(f"\nFinal Test Accuracy: {accuracy * 100:.2f}%")
+
+
+# ==========================================
+# 6. SERIALIZING THE TRAINED MODEL (W & b)
+# ==========================================
+
+def save_model_params(model, mean, std, filename="data/perceptron_metadata.csv"):
+    # We will save this as a "Key-Value" style CSV for easier reading
+    # Create a list for each column
+    data = {
+        'Feature': ['latitude', 'longitude', 'distance_min', 'count_radius', 'avg_magnitude', 'BIAS'],
+        'Weight': np.append(model.weights, model.bias),
+        'Mean': np.append(mean, np.nan), # Bias doesn't have a mean, so we put NaN
+        'Std': np.append(std, np.nan)    # Bias doesn't have a std, so we put NaN
+    }
+    
+    df_params = pd.DataFrame(data)
+    df_params.to_csv(filename, index=False)
+    print(f"\nModel parameters and scaling constants saved to {filename}")
+
+# Call it like this (remove the extra comma at the end)
+save_model_params(model, mean, std)
