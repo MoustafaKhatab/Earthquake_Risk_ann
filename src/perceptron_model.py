@@ -21,7 +21,7 @@ y = df['label'].values
 # ==========================================
 def preprocess_data(X, y, split_ratio=0.8):
     # Shuffle indices to keep X and y synced
-    np.random.seed(42)
+    np.random.seed(50)
     indices = np.random.permutation(len(X))
     X_shuff, y_shuff = X[indices], y[indices]
 

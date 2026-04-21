@@ -15,7 +15,7 @@ def load_seismic_data(filepath):
 # 2. MANUAL PREPROCESSING
 # ==========================================
 def preprocess_data(X, y, split_ratio=0.8):
-    np.random.seed(42)
+    np.random.seed(10)
     indices = np.random.permutation(len(X))
     X_shuff, y_shuff = X[indices], y[indices]
 
